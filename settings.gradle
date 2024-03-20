@@ -1,1 +1,8 @@
 rootProject.name = 'quiz'
+include 'common-api'
+include 'user-api'
+include 'quiz-api'
+include 'user-api'
+include 'common-api'
+include 'quiz-api'
+
