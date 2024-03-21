@@ -12,8 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.Date;
 
 public class JwtProvider {
-//    @Value("${jwt.secret}")
-    private String secretKey = "49bc0951089d29e51dc801fa1af561d4c54d9982c764f63885c30b5ee1b57b25ad4177dbb5c2febd0bcb320758c46757b69d2b2bf15c36e734265d8e82e5509a";
+
+    @Value("${jwt.secret}")
+    private String secretKey;
 
     private long tokenValidTime = 1000L * 60 * 60 * 24;
 
