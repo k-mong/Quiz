@@ -1,6 +1,5 @@
-package example.cinfig;
+package example.config;
 
-import example.config.JwtProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
