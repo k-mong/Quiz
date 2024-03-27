@@ -3,11 +3,14 @@ package example.service;
 import example.config.JwtProvider;
 import example.domain.common.UserType;
 import example.domain.entity.Tester;
+import example.domain.model.JoinForm;
 import example.domain.model.LoginForm;
 import example.domain.repository.TesterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +27,21 @@ public class TesterService {
         }
 
         return jwtProvider.createToken(tester.getEmail(), tester.getId(), UserType.Tester);
+    }
+
+    public Tester join(JoinForm joinForm) {
+        Optional<Tester> findTester  = testerRepository.findByEmail(joinForm.getEmail());
+
+        if(findTester.isPresent()) {
+            throw new RuntimeException("이미 존재하는 회원입니다.");
+        }
+
+        return testerRepository.save(
+                Tester.builder()
+                        .email(joinForm.getEmail())
+                        .password(passwordEncoder.encode(joinForm.getPassword()))
+                        .build());
+
     }
 
 }

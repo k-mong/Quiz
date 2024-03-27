@@ -39,7 +39,7 @@ public class UserService {
         if (findUser.isPresent()) {
             throw new RuntimeException("이미 존재하는 회원입니다.");
         }
-        // 2. 데이터 저장
+        // 2. 저장
         User user = userRepository.save(
                 User.builder()
                         .email(joinForm.getEmail())
