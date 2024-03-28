@@ -13,6 +13,16 @@ public class UserFilter implements Filter {
 
     private final JwtProvider jwtProvider;
 
+    /**
+     *
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     * 스프링 밖에서 url 패턴을 컨트롤러에 가기 전에 필터가 처리함
+     * user/quiz 로들어오는 모든것을 필터처리해줌
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
