@@ -1,6 +1,8 @@
 package example.config.filter;
 
 import example.config.JwtProvider;
+import example.domain.common.UserType;
+import example.domain.common.UserVo;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,8 +27,8 @@ public class UserFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        String token = req.getHeader("X-AUTH-TOKEN");
+        HttpServletRequest req = (HttpServletRequest) servletRequest;   // HttpServletRequest = 클라이언트가 보낸 HTTP 요청을 처리할 때 사용
+        String token = req.getHeader("X-AUTH-TOKEN");   // token 은 HTTP 의 헤더값을 반환한다.
 
         //1. 토큰이 유효한지
         if(!jwtProvider.checkValidToken(token)) {
@@ -34,9 +36,16 @@ public class UserFilter implements Filter {
         }
         //2. USER정보값을 가져오는지
         //2-1 userId, userType
+        UserVo userVo = jwtProvider.getUserVo(token);
 
         //3. 가져온다면 UserType이 user가 맞는지
+        if(!userVo.getUserType().equals(UserType.Answer)) {
+            throw new RuntimeException("접근 가능한 USER TYPE 이 아닙니다.");
+        }
 
         //4. 통과되면 통과
+        // 전처리
+        filterChain.doFilter(servletRequest, servletResponse);
+        // 후처리
     }
 }
