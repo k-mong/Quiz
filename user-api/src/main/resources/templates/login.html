@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<h1>로그인 page</h1>
+<form method="post" th:action="@{/user/test/login}">
+    ID : <input type="text" name="email" placeholder="emalil"/> <br>
+    PASSWORD : <input type="text" name="password" placeholder="password"/>  <br>
+    <input type="submit" value="Login">
+</form>
+
+</body>
+</html>
