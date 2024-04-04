@@ -6,10 +6,11 @@
 </head>
 <body>
 <h1>로그인 page</h1>
-<form method="post" th:action="@{/user/test/login}">
+<form method="post" th:action="@{/user/login}">
     ID : <input type="text" name="email" placeholder="emalil"/> <br>
     PASSWORD : <input type="text" name="password" placeholder="password"/>  <br>
     <input type="submit" value="Login">
+    <input type="button" value="Join" onclick="location.href='join.html'">
 </form>
 
 </body>

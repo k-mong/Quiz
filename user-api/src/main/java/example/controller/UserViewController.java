@@ -14,4 +14,9 @@ public class UserViewController {
     public String showLogin() {
         return "login";
     }
+
+//    @GetMapping("/join")
+//    public String showJoin() {
+//        return "join";
+//    }
 }
