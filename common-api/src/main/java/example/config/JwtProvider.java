@@ -19,7 +19,7 @@ public class JwtProvider {
     private long tokenValidTime = 1000L * 60 * 60 * 24;
 
     public String createToken(String email, Long id, UserType userType) {
-        Claims claims = Jwts.claims()
+        Claims claims = Jwts.claims()   // jwt 페이로드
                 .setSubject(Aes256Util.encrypt(email))
                 .setId(Aes256Util.encrypt(id.toString()));
 
@@ -43,7 +43,7 @@ public class JwtProvider {
      */
     public boolean checkValidToken(String jwtToken) {
         try {
-            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);    //
             return !claimsJws.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;

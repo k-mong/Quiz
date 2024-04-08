@@ -1,15 +1,20 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
 <body>
-    <h1>회원가입 page</h1>
-        <form method="post" th:action="@{/user/join}">
-            ID : <input type="text" name="email" placeholder="emalil"/> <br>
-            PASSWORD : <input type="text" name="password" placeholder="password"/>  <br>
-            <input type="submit" value="join">
-            <input type="button" value="back" onclick="location.href='login.html'">
-        </form>
+<form method="post" th:action="@{/user/join}">
+    <div style="text-align: center">
+        <h1>회원가입 page</h1>
+        ID : <input type="text" name="email" id="email" placeholder="email"/> <br>
+        PASSWORD : <input type="text" name="password" id="password" placeholder="password"/>  <br>
+
+        <button type="submit" value="join">join</button>
+        <button type="button" value="back" onclick="location.href='login.html'">back</button>
+
+    </div>
+</form>
 </body>
 </html>
