@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="quizPort" th:value="${quizPort}">
+    <div id="userZone">
+        <button id="login">로그인</button>
+        <button id="join">회원가입</button>
+    </div>
+
+    <div id="quizZone">
+        <button id="makeQuizBtn">퀴즈만들기</button>
+        <button id="moveQuizBtn">퀴즈풀기</button>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var quizPort = $("#quizPort").val();
+
+        $('#makeQuizBtn').click(function() {
+            window.location.href = quizPort+'/view/tester/list';
+        });
+    });
+</script>
+
+</body>
+</html>
