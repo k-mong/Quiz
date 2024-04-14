@@ -12,11 +12,11 @@ public class UserViewController {
 
     @GetMapping("/login")
     public String showLogin() {
-        return "login";
+        return "user/login";
     }
 
     @GetMapping("/join")
     public String showJoin() {
-        return "join";
+        return "user/join";
     }
 }

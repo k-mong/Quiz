@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+ <form method="post" th:action="@{/user/login}">
+     <div style="text-align: center">
+         <h1>로그인 page</h1>
+         <div>
+             ID : <input type="text" name="email" id="email" placeholder="email"/> <br>
+             PASSWORD : <input type="text" name="password" id="password" placeholder="password"/>  <br>
+         </div>
+
+         <div>
+             <input type="submit" value="Login">
+             <input type="button" value="Join" id="moveJoinBtn">
+         </div>
+     </div>
+ </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#moveJoinBtn').click(function () {
+            window.location.href = '/view/user/join';
+        });
+    </script>
+</body>
+</html>

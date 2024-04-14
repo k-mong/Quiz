@@ -1,5 +1,6 @@
 package example.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -17,5 +18,15 @@ public class IndexViewController {
     public String index(Model model) {
         model.addAttribute("quizPort", quizPort);
         return "index";
+    }
+
+    @GetMapping("/login")
+    public String indexLogin() {
+        return "login";
+    }
+
+    @GetMapping("/join")
+    public String indexJoin() {
+        return "join";
     }
 }
