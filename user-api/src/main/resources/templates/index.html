@@ -5,13 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="quizPort" th:value="${quizPort}">
+<input type="hidden" id="quizPort" th:value="${quizPort}">
     <div id="userZone">
-        <button id="login">로그인</button>
-        <button id="join">회원가입</button>
+        <button id="moveIndexLogin">로그인</button>
+        <button id="moveIndexJoin">회원가입</button>
     </div>
 
-    <div id="quizZone">
+    <div id="quizZone" style="display:none">
+        <input type="text" id="userEmail" th:value="${userEmail}" readonly> 님 환영합니다!!<br>
         <button id="makeQuizBtn">퀴즈만들기</button>
         <button id="moveQuizBtn">퀴즈풀기</button>
     </div>
@@ -20,11 +21,29 @@
 <script>
     $(document).ready(function() {
         var quizPort = $("#quizPort").val();
+        var userEmail = $("#userEmail").val();
+
+        if(userEmail != '') {
+            $("#quizZone").show();
+            $("#userZone").hide();
+        }
 
         $('#makeQuizBtn').click(function() {
             window.location.href = quizPort+'/view/tester/list';
         });
+
+        $('#moveIndexLogin').click(function () {
+            window.location.href = '/login';
+        });
+
+        $('#moveIndexJoin').click(function () {
+            window.location.href = '/join';
+        });
+
     });
+
+
+
 </script>
 
 </body>
