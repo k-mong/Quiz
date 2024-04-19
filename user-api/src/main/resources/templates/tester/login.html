@@ -5,9 +5,9 @@
     <title>로그인</title>
 </head>
 <body>
- <form method="post" th:action="@{/user/login}">
+ <form method="post" th:action="@{/tester/login}">
      <div style="text-align: center">
-         <h1>User 로그인 page</h1>
+         <h1>Tester 로그인 page</h1>
          <div>
              ID : <input type="text" name="email" id="email" placeholder="email"/> <br>
              PASSWORD : <input type="text" name="password" id="password" placeholder="password"/>  <br>
@@ -23,7 +23,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#moveJoinBtn').click(function () {
-            window.location.href = '/view/user/join';
+            window.location.href = '/view/tester/join';
         });
     </script>
 </body>
