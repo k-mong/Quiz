@@ -34,10 +34,18 @@ public class UserController {
         return modelAndView;
     }
 
+//    @PostMapping("/join")
+//    public ResponseEntity<User>join (@ModelAttribute JoinForm joinForm) {
+//        User result = userService.join(joinForm);
+//        return ResponseEntity.ok(result);
+//    }
+
     @PostMapping("/join")
-    public ResponseEntity<User>join (@ModelAttribute JoinForm joinForm) {
+    public ModelAndView join (@ModelAttribute JoinForm joinForm) {
         User result = userService.join(joinForm);
-        return ResponseEntity.ok(result);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
 }

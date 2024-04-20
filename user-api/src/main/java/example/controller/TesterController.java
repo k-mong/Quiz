@@ -29,9 +29,17 @@ public class TesterController {
         return modelAndView;
     }
 
+//    @PostMapping("/join")
+//    public ResponseEntity<Tester> join (@ModelAttribute JoinForm joinForm) {
+//        Tester result = testerService.join(joinForm);
+//        return ResponseEntity.ok(result);
+//    }
+
     @PostMapping("/join")
-    public ResponseEntity<Tester> join (@ModelAttribute JoinForm joinForm) {
+    public ModelAndView join (@ModelAttribute JoinForm joinForm) {
         Tester result = testerService.join(joinForm);
-        return ResponseEntity.ok(result);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 }
