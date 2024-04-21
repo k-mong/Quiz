@@ -1,5 +1,6 @@
 package example.service;
 
+import example.client.RedisClient;
 import example.config.JwtProvider;
 import example.domain.common.UserType;
 import example.domain.entity.User;
@@ -18,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final RedisClient redisClient;
     public String login(LoginForm loginForm) {
         // 1. 존재하는 회원인지 확인
         User findUser = userRepository.findByEmail(loginForm.getEmail())
@@ -26,8 +28,13 @@ public class UserService {
         if(!passwordEncoder.matches(loginForm.getPassword(), findUser.getPassword())) {
             throw new RuntimeException("아이디 또는 비밀번호를 확인해 주세요 - 비밀번호");
         }
-        // 3. 토큰발행
-        return jwtProvider.createToken(findUser.getEmail(), findUser.getId(), UserType.Answer);
+        // 3. 토큰생성
+        String token = jwtProvider.createToken(findUser.getEmail(), findUser.getId(), UserType.Answer);
+
+        // 4. 토큰 레디스에 넣기
+        redisClient.put(findUser.getId(), token);
+
+        return "로그인 완료!";
     }
 
     public User join(JoinForm joinForm) {
